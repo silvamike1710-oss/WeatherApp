@@ -1,0 +1,266 @@
+/* =============================================
+   RETRO WEATHER — Windows 95 Theme
+   Red & black casino palette meets classic Win95
+   ============================================= */
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #008080; /* Classic Win95 teal desktop */
+    background-image:
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 2px,
+            rgba(0,0,0,0.03) 2px,
+            rgba(0,0,0,0.03) 4px
+        );
+    font-family: "MS Sans Serif", "Segoe UI", Arial, sans-serif;
+    font-size: 11px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    gap: 0; /* Window handles its own layout */
+}
+
+/* --- The "Window" wrapper --- */
+/* Wraps both the form and the card like a single Win95 app window */
+body::before {
+    content: none; /* Using a real element approach instead */
+}
+
+.weatherForm,
+.card {
+    width: 340px;
+}
+
+/* --- Win95 Window Container (the form acts as the title bar + body) --- */
+.weatherForm {
+    /* Win95 raised border trick */
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+    outline: 1px solid #000000;
+    background-color: #c0c0c0;
+
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+
+    /* Drop shadow for that floating window feel */
+    box-shadow: 4px 4px 0px #000000;
+}
+
+/* --- Title Bar --- */
+.weatherForm::before {
+    content: "🌤  Retro Weather";
+    display: block;
+    background: linear-gradient(to right, #800000, #cc0000); /* Red Win95 title bar */
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 11px;
+    padding: 3px 6px;
+    letter-spacing: 0.3px;
+    /* Win95 title bar border */
+    border-bottom: 1px solid #808080;
+}
+
+/* --- Form Body --- */
+.weatherForm > input,
+.weatherForm > button {
+    margin: 10px 12px;
+}
+
+/* --- City Input --- */
+.cityInput {
+    width: calc(100% - 24px); /* account for margins */
+    /* Win95 sunken/inset input look */
+    border-top: 2px solid #808080;
+    border-left: 2px solid #808080;
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    outline: 1px solid #000000;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: inherit;
+    font-size: 11px;
+    padding: 4px 6px;
+    /* Remove browser default focus glow */
+    outline-offset: 0;
+}
+
+.cityInput:focus {
+    outline: 1px dotted #000000;
+}
+
+.cityInput::placeholder {
+    color: #808080;
+}
+
+/* --- Submit Button --- */
+.weatherForm button {
+    width: calc(100% - 24px);
+    /* Win95 raised button */
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+    outline: 1px solid #000000;
+    background-color: #c0c0c0;
+    color: #000000;
+    font-family: inherit;
+    font-size: 11px;
+    padding: 5px 12px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 12px;
+    letter-spacing: 0.2px;
+}
+
+.weatherForm button:active {
+    /* Pressed state — invert the bevel */
+    border-top: 2px solid #808080;
+    border-left: 2px solid #808080;
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    padding: 6px 11px 4px 13px; /* slight shift for press feel */
+}
+
+.weatherForm button:focus {
+    outline: 1px dotted #000000;
+    outline-offset: -4px;
+}
+
+/* --- Weather Card (Result Window) --- */
+.card {
+    /* Another Win95 window, below the form */
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+    outline: 1px solid #000000;
+    background-color: #c0c0c0;
+    box-shadow: 4px 4px 0px #000000;
+
+    /* Stack below the form window */
+    margin-top: 16px;
+
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    gap: 0;
+}
+
+/* Card title bar — red like the casino theme */
+.card::before {
+    content: "📋  Weather Report";
+    display: block;
+    width: 100%;
+    background: linear-gradient(to right, #800000, #cc0000);
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 11px;
+    padding: 3px 6px;
+    border-bottom: 1px solid #808080;
+}
+
+/* Card content area */
+.card > * {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+/* --- City Name --- */
+.cityDisplay {
+    font-size: 18px;
+    font-weight: bold;
+    color: #800000; /* Deep red — casino palette */
+    text-align: center;
+    margin-top: 14px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #808080; /* Win95 separator */
+    width: calc(100% - 32px);
+    margin-left: 16px;
+    margin-right: 16px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* --- Weather Emoji --- */
+.weatherEmoji {
+    font-size: 42px;
+    text-align: center;
+    margin: 10px 0 4px;
+    line-height: 1;
+}
+
+/* --- Temperature --- */
+.tempDisplay {
+    font-size: 22px;
+    font-weight: bold;
+    color: #000000;
+    text-align: center;
+    margin: 4px 0;
+}
+
+/* --- Description --- */
+.descDisplay {
+    font-size: 11px;
+    color: #000080; /* Win95 classic blue for secondary info */
+    text-align: center;
+    text-transform: capitalize;
+    margin: 2px 0;
+}
+
+/* --- Humidity --- */
+.humidityDisplay {
+    font-size: 11px;
+    color: #000000;
+    text-align: center;
+    margin: 2px 0 14px;
+
+    /* Sunken status-bar style */
+    background-color: #c0c0c0;
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+    border-right: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+    padding: 3px 8px !important;
+    width: calc(100% - 32px);
+    margin-left: 16px;
+    margin-right: 16px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* --- Error Display --- */
+.errorDisplay {
+    color: #cc0000;
+    font-weight: bold;
+    font-size: 11px;
+    text-align: center;
+    padding: 14px 16px !important;
+
+    /* Win95 warning box — inset sunken panel */
+    border-top: 2px solid #808080;
+    border-left: 2px solid #808080;
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    background-color: #ffffff;
+    width: calc(100% - 32px);
+    margin: 14px 16px;
+}
+
+.errorDisplay::before {
+    content: "⚠ Error: ";
+    color: #000000;
+}
